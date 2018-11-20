@@ -21,7 +21,7 @@ type Asset struct {
 }
 
 func Download(url string) error {
-	cmd := exec.Command("curl", url)
+	cmd := exec.Command("wget", url)
 	log.Println("\nRunning command and waiting for it to finish...")
 	err := cmd.Run()
 	log.Printf("Command finished with error: %v", err)
@@ -32,7 +32,7 @@ func main() {
 	length := len(os.Args)
 
 	if length < 3 {
-		fmt.Println("Not found username or repository name")
+		fmt.Println("Not found username or repository name\ngo main.go [username] [repository_name]")
 		os.Exit(1)
 	}
 
